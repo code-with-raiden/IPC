@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret")
 DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
 
 # Properly parse ALLOWED_HOSTS from environment
-ALLOWED_HOSTS = [host.strip() for host in os.environ.get("ALLOWED_HOSTS", "ipc-szkk.onrender.com").split(",")]
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get("ALLOWED_HOSTS", ipc-szkk.onrender.com).split(",")]
 
 # Application definition
 INSTALLED_APPS = [
@@ -102,3 +102,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 print("DEBUG:", DEBUG)
 print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
+
