@@ -15,10 +15,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
+# DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
 
 # Properly parse ALLOWED_HOSTS from environment
-ALLOWED_HOSTS = [host.strip() for host in os.environ.get("ALLOWED_HOSTS", "ipc-szkk.onrender.com").split(",")]
+# ALLOWED_HOSTS = [host.strip() for host in os.environ.get("ALLOWED_HOSTS", "ipc-szkk.onrender.com").split(",")]
+
+DEBUG = True
+ALLOWED_HOSTS = ['*']  # just for testing
 
 # Application definition
 INSTALLED_APPS = [
@@ -113,6 +116,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Temporary debug print to confirm values in Render logs
 print("DEBUG:", DEBUG)
 print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
+
 
 
 
