@@ -63,11 +63,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'reading_assessment.wsgi.application'
 
 # Database configuration
+# DATABASES = {
+#     'default': dj_database_url.parse(
+#         os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
+#     )
+# }
+
+
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',  # fallback for local dev
+        conn_max_age=600,
+        ssl_require=True  # ensure SSL on platforms like Render
     )
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -103,3 +113,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Temporary debug print to confirm values in Render logs
 print("DEBUG:", DEBUG)
 print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
+
