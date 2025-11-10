@@ -64,18 +64,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reading_assessment.wsgi.application'
 
-# Database configuration
-# DATABASES = {
-#     'default': dj_database_url.parse(
-#         os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
-#     )
-# }
+
+import dj_database_url
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=os.environ.get('DATABASE_URL', f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=False
     )
 }
 
@@ -115,6 +115,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Temporary debug print to confirm values in Render logs
 print("DEBUG:", DEBUG)
 print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
+
 
 
 
